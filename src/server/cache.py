@@ -1,10 +1,11 @@
 import sys
+sys.path.append('src')
+sys.path.append('gen-py')
+
 import time
 from typing import Any, Dict
 from lib.doublylinkedlist import DoublyLinkedList
-
-sys.path.append('../gen-py')
-from keyvalue.ttypes import GetRequest, GetResponse, SetRequest
+from keyvalue.ttypes import GetRequest, GetResponse, SetRequest, KeyNotFound
 
 
 class KeyValue:
@@ -44,8 +45,7 @@ class CacheHandler:
                 del self._cache[key]
             else:
                 return GetResponse(val=data.value)
-
-        return GetResponse(val="key_not_found")
+        raise KeyNotFound()
 
     def _check_key_expired(self, insert_time: int, ttl: int) -> int:
         current_time = time.time()

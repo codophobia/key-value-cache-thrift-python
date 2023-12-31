@@ -13,7 +13,11 @@ struct GetResponse {
     1: string val
 }
 
+exception KeyNotFound {
+
+}
+
 service KeyValueService {
-    GetResponse Get(1:GetRequest req),
+    GetResponse Get(1:GetRequest req) throws(1:KeyNotFound ex),
     void Set(1:SetRequest req)
 }

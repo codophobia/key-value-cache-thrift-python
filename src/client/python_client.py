@@ -1,8 +1,8 @@
 import sys
-sys.path.append('../gen-py')
+sys.path.append('gen-py')
 
 from keyvalue import KeyValueService
-from keyvalue.ttypes import GetRequest, GetResponse, SetRequest
+from keyvalue.ttypes import GetRequest, GetResponse, SetRequest, KeyNotFound
 
 from thrift import Thrift
 from thrift.transport import TSocket
@@ -27,8 +27,13 @@ def main():
     transport.open()
 
     client.Set(SetRequest(key="shivam", val="mitra"))
-    result = client.Get(GetRequest(key="shivam"))
+    result: GetResponse = client.Get(GetRequest(key="shivam"))
     print(result.val)
+
+    try:
+        client.Get(GetRequest(key="shiva"))
+    except KeyNotFound:
+        print("key not found")
 
     # Close!
     transport.close()
@@ -38,4 +43,4 @@ if __name__ == '__main__':
     try:
         main()
     except Thrift.TException as tx:
-        print('%s' % tx.message)
+        print(tx.message)

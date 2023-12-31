@@ -73,6 +73,8 @@ class Client(Iface):
         iprot.readMessageEnd()
         if result.success is not None:
             return result.success
+        if result.ex is not None:
+            raise result.ex
         raise TApplicationException(TApplicationException.MISSING_RESULT, "Get failed: unknown result")
 
     def Set(self, req):
@@ -144,6 +146,9 @@ class Processor(Iface, TProcessor):
             msg_type = TMessageType.REPLY
         except TTransport.TTransportException:
             raise
+        except KeyNotFound as ex:
+            msg_type = TMessageType.REPLY
+            result.ex = ex
         except TApplicationException as ex:
             logging.exception('TApplication exception in handler')
             msg_type = TMessageType.EXCEPTION
@@ -250,12 +255,14 @@ class Get_result(object):
     """
     Attributes:
      - success
+     - ex
 
     """
 
 
-    def __init__(self, success=None,):
+    def __init__(self, success=None, ex=None,):
         self.success = success
+        self.ex = ex
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -272,6 +279,11 @@ class Get_result(object):
                     self.success.read(iprot)
                 else:
                     iprot.skip(ftype)
+            elif fid == 1:
+                if ftype == TType.STRUCT:
+                    self.ex = KeyNotFound.read(iprot)
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -285,6 +297,10 @@ class Get_result(object):
         if self.success is not None:
             oprot.writeFieldBegin('success', TType.STRUCT, 0)
             self.success.write(oprot)
+            oprot.writeFieldEnd()
+        if self.ex is not None:
+            oprot.writeFieldBegin('ex', TType.STRUCT, 1)
+            self.ex.write(oprot)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -305,6 +321,7 @@ class Get_result(object):
 all_structs.append(Get_result)
 Get_result.thrift_spec = (
     (0, TType.STRUCT, 'success', [GetResponse, None], None, ),  # 0
+    (1, TType.STRUCT, 'ex', [KeyNotFound, None], None, ),  # 1
 )
 
 
