@@ -1,11 +1,12 @@
-import sys
-sys.path.append('src')
-sys.path.append('gen-py')
-
 import time
 from typing import Any, Dict
-from lib.doublylinkedlist import DoublyLinkedList
-from keyvalue.ttypes import GetRequest, GetResponse, SetRequest, KeyNotFound
+from cache.core.doublylinkedlist import DoublyLinkedList
+from cache.gen.keyvalue.ttypes import (
+    GetRequest,
+    GetResponse,
+    SetRequest,
+    KeyNotFound
+)
 
 
 class KeyValue:
@@ -54,3 +55,10 @@ class CacheHandler:
         if (current_time - insert_time) >= ttl:
             return 1
         return 0
+
+
+if __name__ == "__main__":
+    ch = CacheHandler()
+    ch.Set(SetRequest(key="shivam", val="mitra", ttl=0))
+    result: GetResponse = ch.Get(GetRequest(key="shivam"))
+    print(result.val)
