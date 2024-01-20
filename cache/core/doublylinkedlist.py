@@ -25,10 +25,10 @@ class DoublyLinkedList:
     def tail(self) -> Optional[Node]:
         return self._tail
 
-    def is_empty(self) -> int:
+    def is_empty(self) -> bool:
         if self._head is None:
-            return 1
-        return 0
+            return True
+        return False
 
     def insert_at_tail(self, val: Any) -> None:
         new_node = Node(val)
@@ -71,7 +71,11 @@ class DoublyLinkedList:
             prev_node.next = node.next
             if node.next:
                 node.next.prev = prev_node
-
+                node.next = None
+            else:
+                self._tail = prev_node
+                node.prev = None
+        self._size -= 1
         return data
 
     def display(self) -> None:

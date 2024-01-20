@@ -17,3 +17,13 @@ python3 -m cache run-server
 ```
 python3 -m cache run-client
 ```
+
+# Run tests
+```
+pytest cache
+```
+
+# Run flake
+```
+flake8 cache --exclude gen
+```
