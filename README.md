@@ -5,7 +5,7 @@ Implement a simple key value cache using thrift and Python
 ```
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt 
+pip install -r requirements.txt
 ```
 
 # Start the cache server
