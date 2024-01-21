@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [![test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build-test.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build-test.yaml) [![lint](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml) [![release](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/release.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/release.yaml) ![GitHub License](https://img.shields.io/github/license/codophobia/key-value-cache-thrift-python) 
+=======
+[![test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build-test.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build-test.yaml) [![lint](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml) [![release](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/release.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/release.yaml) ![GitHub License](https://img.shields.io/github/license/codophobia/key-value-cache-thrift-python) ![PyPI - Version](https://img.shields.io/pypi/v/thriftcacheserver)
+>>>>>>> 86220bd (Update readme)
 
 ## key-value-cache-thrift-python
 Implement a simple key value cache using thrift and Python
