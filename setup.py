@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='thriftcacheserver',
-    version='1.0',
+    version='1.1',
     description='A cache server using thrift',
     url='https://github.com/codophobia/key-value-cache-thrift-python',
     entry_points={
