@@ -1,4 +1,4 @@
-[![build-and-test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build_test.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build_test.yaml) [![lint-test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml)
+[![build-and-test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build_test.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/build_test.yaml) [![lint-test](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml/badge.svg)](https://github.com/codophobia/key-value-cache-thrift-python/actions/workflows/lint.yaml) ![GitHub License](https://img.shields.io/github/license/codophobia/key-value-cache-thrift-python) 
 
 # key-value-cache-thrift-python
 Implement a simple key value cache using thrift and Python
