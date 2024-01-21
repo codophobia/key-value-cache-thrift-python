@@ -17,5 +17,7 @@ setup(
     install_requires=[
         'thrift',
     ],
-    zip_safe=False
+    zip_safe=False,
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
 )
