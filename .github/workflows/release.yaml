@@ -1,0 +1,37 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python # Set Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest cache
+      - name: Code quality with flake8
+        run: |
+            pip install flake8
+            flake8 cache --exclude gen
+      - name: Build package
+        run: |
+          pip install build
+          python3 -m build
+      - name: Upload package to PyPI
+        uses: pypa/gh-action-pypi-publish@27.0.3
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
+          repository_url: https://upload.pypi.org/legacy/
+          build_dir: dist

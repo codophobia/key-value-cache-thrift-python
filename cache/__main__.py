@@ -1,5 +1,9 @@
 
-from cache.cli import main
+from cache.cli import main as cli_main
+
+
+def main():
+    cli_main()
 
 
 if __name__ == "__main__":
